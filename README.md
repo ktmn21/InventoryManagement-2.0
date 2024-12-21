@@ -16,7 +16,6 @@ An Inventory Management System built with Spring Boot that allows users to manag
   - Filter products by category.
 - **Validation**: Input validation using `javax.validation`.
 - **API Documentation**: Swagger UI for interactive API documentation.
-- **Logging**: Log application activities using SLF4J and Logback.
 
 ---
 
