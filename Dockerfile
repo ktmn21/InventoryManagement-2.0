@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file from the target directory to the container
-COPY target/inventory_manager.jar /app/inventory_manager.jar
+COPY target/inventory_management-0.0.1.jar /app/inventory_management.jar
 
 # Expose the application's port
 EXPOSE 8080
@@ -17,4 +17,4 @@ EXPOSE 8080
 #    SPRING_DATASOURCE_PASSWORD=SAM2vAjgD1OazngeVwRvzG9jF9BGOoGd
 
 # Command to run the application
-ENTRYPOINT ["java", "-jar", "/app/inventory_manager.jar"]
+ENTRYPOINT ["java", "-jar", "/app/inventory_management.jar"]
