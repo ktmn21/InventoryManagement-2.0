@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file from the target directory to the container
-COPY target/inventory_manager-0.0.1-SNAPSHOT.jar /app/inventory_manager.jar
+COPY target/inventory_manager.jar /app/inventory_manager.jar
 
 # Expose the application's port
 EXPOSE 8080
