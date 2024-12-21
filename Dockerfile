@@ -1,20 +1,8 @@
-# Use an official OpenJDK 17 runtime as the base image
-FROM openjdk:17-jdk-slim
+FROM maven:3.8.3-openjdk-17 AS build
+COPY . .
+RUN mvn clean packege -DskipTests
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the built JAR file from the target directory to the container
-COPY target/inventory_management-0.0.1.jar /app/inventory_management.jar
-
-# Expose the application's port
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/invenotry_management-0.0.1-SNAPSHOT.jar invenotry_management.jar
 EXPOSE 8080
-
-# Set environment variables for MySQL (you can customize these as needed)
-# Use host.docker.internal to access the host's MySQL server
-#ENV SPRING_DATASOURCE_URL=jdbc:postgresql://dpg-ctin4tggph6c7389u3p0-a/invenotry_management?\
-#    SPRING_DATASOURCE_USERNAME=i_user \
-#    SPRING_DATASOURCE_PASSWORD=SAM2vAjgD1OazngeVwRvzG9jF9BGOoGd
-
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "/app/inventory_management.jar"]
+ENTRYPOINT ["java", "-jar", "inventory_manager.jar"]
